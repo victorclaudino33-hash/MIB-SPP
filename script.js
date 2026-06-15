@@ -257,34 +257,58 @@ function initCounters() {
 
 /* ─────────────────────────────────────────────
    7. HOVER-AUDIO NOS VÍDEOS [data-hover-audio]
-   — Galeria (.video-card__sound-badge) e
-   — Depoimentos (.dep-video-card)
-   Ao hover: ativa o áudio do vídeo
-   Ao sair: muta novamente
+   — Depoimentos (.dep-video-card): CLIQUE para
+     ativar/desativar áudio (política de autoplay
+     do browser bloqueia som sem interação direta)
+   — Galeria (.video-card): CLIQUE no badge de som
 ───────────────────────────────────────────── */
 
 function initHoverAudio() {
 
-  /* ── 7a. Vídeos de depoimentos (.dep-video-card) ── */
+  /* ── 7a. Vídeos de depoimentos (.dep-video-card) ──
+     Browser não permite desmutar via hover em vídeos
+     autoplay. A solução é exigir um clique.          */
   document.querySelectorAll('.dep-video-card').forEach(card => {
     const video = card.querySelector('video[data-hover-audio]');
     if (!video) return;
 
-    card.addEventListener('mouseenter', () => {
-      video.muted = false;
-      card.classList.add('is-unmuted');
-    });
+    // Garante que começa mutado e tocando
+    video.muted = true;
+    video.play().catch(() => {});
 
+    function unmute() {
+      // Pausa todos os outros vídeos de depoimento antes
+      document.querySelectorAll('.dep-video-card video').forEach(v => {
+        if (v !== video) {
+          v.muted = true;
+          v.closest('.dep-video-card').classList.remove('is-unmuted');
+        }
+      });
+
+      const isMuted = video.muted;
+      video.muted = !isMuted;
+
+      if (!video.muted) {
+        // Garante que o vídeo está tocando antes de desmutar
+        video.play().then(() => {
+          card.classList.add('is-unmuted');
+        }).catch(() => {
+          // Se ainda bloqueado, força mute de volta
+          video.muted = true;
+          card.classList.remove('is-unmuted');
+        });
+      } else {
+        card.classList.remove('is-unmuted');
+      }
+    }
+
+    // Desktop: clique no card
+    card.addEventListener('click', unmute);
+
+    // Ao sair do card, muta novamente
     card.addEventListener('mouseleave', () => {
       video.muted = true;
       card.classList.remove('is-unmuted');
-    });
-
-    // Mobile: toque ativa/desativa
-    card.addEventListener('click', () => {
-      const muted = video.muted;
-      video.muted = !muted;
-      card.classList.toggle('is-unmuted', !video.muted);
     });
   });
 
@@ -295,23 +319,41 @@ function initHoverAudio() {
 
     const badge = card.querySelector('.video-card__sound-badge');
 
-    card.addEventListener('mouseenter', () => {
-      video.muted = false;
-      if (badge) badge.style.color = 'var(--gold)';
-    });
+    // Garante muted no início
+    video.muted = true;
 
+    function toggleAudio(e) {
+      if (e.target.closest('.video-card__play')) return;
+
+      const isMuted = video.muted;
+      video.muted = !isMuted;
+
+      if (!video.muted) {
+        video.play().then(() => {
+          if (badge) badge.style.color = 'var(--gold)';
+          // Muta outros vídeos da galeria
+          document.querySelectorAll('.video-card video[data-hover-audio]').forEach(v => {
+            if (v !== video) {
+              v.muted = true;
+              const b = v.closest('.video-card')?.querySelector('.video-card__sound-badge');
+              if (b) b.style.color = '';
+            }
+          });
+        }).catch(() => {
+          video.muted = true;
+          if (badge) badge.style.color = '';
+        });
+      } else {
+        if (badge) badge.style.color = '';
+      }
+    }
+
+    card.addEventListener('click', toggleAudio);
+
+    // Muta ao sair do card
     card.addEventListener('mouseleave', () => {
       video.muted = true;
       if (badge) badge.style.color = '';
-    });
-
-    // Clique para toggle em mobile
-    card.addEventListener('click', e => {
-      // Não interferir se o clique foi no botão play
-      if (e.target.closest('.video-card__play')) return;
-      const muted = video.muted;
-      video.muted = !muted;
-      if (badge) badge.style.color = video.muted ? '' : 'var(--gold)';
     });
   });
 }
