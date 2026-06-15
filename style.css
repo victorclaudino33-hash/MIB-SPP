@@ -1680,3 +1680,56 @@ img { max-width: 100%; display: block; }
   .testimonials__grid { grid-template-columns: 1fr; }
   .dep-videos__grid { grid-template-columns: 1fr; }
 }
+/* ===== GALERIA AMPLIADA — lote de fotos extra ===== */
+/* Grid responsivo auto-fill para qualquer quantidade de fotos */
+.photo-grid--uniform {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.photo-grid--uniform .photo-grid__item {
+  aspect-ratio: 4/5;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.photo-grid--uniform .photo-grid__item:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(201,168,76,0.6);
+  box-shadow: 0 8px 28px rgba(201,168,76,0.2);
+}
+.photo-grid--uniform .photo-grid__item img {
+  transition: transform 0.5s ease;
+}
+.photo-grid--uniform .photo-grid__item:hover img {
+  transform: scale(1.08);
+}
+
+/* Artistas grid — suporte a 6 cards */
+.artists__grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+/* Depoimentos — suporte a 5 cards */
+.testimonials__grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+/* ===== TESTIMONIALS — carrossel horizontal para muitos cards ===== */
+.testimonials__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.testimonial-card {
+  flex: 1 1 280px;
+  max-width: 340px;
+}
+
+/* ===== ARTISTS — grid responsivo para lista extensa ===== */
+.artists__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
