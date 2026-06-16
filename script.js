@@ -436,84 +436,156 @@ function initBoxVideo() {
 
 /* ─────────────────────────────────────────────
    10. FORMULÁRIO DE CONTATO
-   Validação dos campos obrigatórios + exibição
-   de mensagem de sucesso (#formSuccess)
-   Aplica borda dourada em campos inválidos
+   Validação + EmailJS + feedback descritivo
+   + contador de caracteres + máscara de telefone
 ───────────────────────────────────────────── */
 
 function initContactForm() {
+  // Inicializa EmailJS com a chave pública
+  if (window.emailjs) {
+    emailjs.init({ publicKey: 'mKipnyk8gseSW272E' });
+  }
+
   const form    = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
   if (!form || !success) return;
 
-  const GOLD_FOCUS   = 'rgba(201,168,76,0.45)';
-  const ERROR_COLOR  = 'rgba(239,68,68,0.6)';
+  const ERROR_COLOR = 'rgba(239,68,68,0.6)';
+
+  /* ── Helpers de estado de campo ── */
+  function getErrorEl(field) {
+    return field.parentElement.querySelector('.contact__field-error');
+  }
 
   function setValid(field) {
     field.style.borderColor = '';
     field.style.boxShadow   = '';
+    const err = getErrorEl(field);
+    if (err) err.textContent = '';
   }
 
-  function setInvalid(field) {
+  function setInvalid(field, msg) {
     field.style.borderColor = ERROR_COLOR;
     field.style.boxShadow   = '0 0 0 3px rgba(239,68,68,0.12)';
+    const err = getErrorEl(field);
+    if (err) err.textContent = msg || 'Campo obrigatório';
   }
 
-  // Reseta estilo ao digitar
+  /* ── Cria spans de erro abaixo de cada campo ── */
   form.querySelectorAll('input, select, textarea').forEach(field => {
-    field.addEventListener('input', () => setValid(field));
+    const span = document.createElement('span');
+    span.className = 'contact__field-error';
+    field.parentElement.appendChild(span);
+
+    field.addEventListener('input',  () => setValid(field));
     field.addEventListener('change', () => setValid(field));
   });
 
+  /* ── Validação de e-mail ── */
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  /* ── Submissão ── */
   form.addEventListener('submit', e => {
     e.preventDefault();
 
-    const requiredFields = form.querySelectorAll('[required]');
     let valid = true;
 
-    requiredFields.forEach(field => {
-      const empty = field.value.trim() === '';
-      if (empty) {
-        setInvalid(field);
+    // Nome
+    const nameField = form.querySelector('#name');
+    if (nameField) {
+      if (nameField.value.trim() === '') {
+        setInvalid(nameField, 'Por favor, informe seu nome completo');
         valid = false;
       } else {
-        setValid(field);
+        setValid(nameField);
       }
-    });
+    }
 
-    // Validação extra: campo telefone deve ter pelo menos 10 dígitos
+    // E-mail
+    const emailField = form.querySelector('#email');
+    if (emailField) {
+      if (emailField.value.trim() === '') {
+        setInvalid(emailField, 'Por favor, informe seu e-mail');
+        valid = false;
+      } else if (!isValidEmail(emailField.value.trim())) {
+        setInvalid(emailField, 'E-mail inválido (ex: nome@email.com)');
+        valid = false;
+      } else {
+        setValid(emailField);
+      }
+    }
+
+    // Telefone
     const phoneField = form.querySelector('#phone');
-    if (phoneField && phoneField.value.replace(/\D/g, '').length < 10) {
-      setInvalid(phoneField);
+    if (phoneField) {
+      const digits = phoneField.value.replace(/\D/g, '');
+      if (digits.length < 10) {
+        setInvalid(phoneField, 'Telefone deve ter pelo menos 10 dígitos');
+        valid = false;
+      } else {
+        setValid(phoneField);
+      }
+    }
+
+    // Serviço
+    const serviceField = form.querySelector('#service');
+    if (serviceField && serviceField.value === '') {
+      setInvalid(serviceField, 'Selecione o tipo de serviço');
       valid = false;
+    } else if (serviceField) {
+      setValid(serviceField);
     }
 
     if (!valid) {
-      // Foca no primeiro campo inválido
-      const firstInvalid = form.querySelector('[required]:invalid, [style*="rgba(239"]');
+      const firstInvalid = form.querySelector('[style*="rgba(239"]');
       if (firstInvalid) firstInvalid.focus();
       return;
     }
 
-    /* ── Simulação de envio (substitua por fetch real) ── */
+    /* ── Envio via EmailJS ── */
     const submitBtn = form.querySelector('.contact__submit');
+    const originalHTML = submitBtn ? submitBtn.innerHTML : '';
+
     if (submitBtn) {
-      const originalText = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Enviando…';
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        form.reset();
-
-        // Exibe mensagem de sucesso
-        success.classList.add('show');
-
-        // Oculta após 6 segundos
-        setTimeout(() => success.classList.remove('show'), 6000);
-      }, 1200);
+      submitBtn.innerHTML = 'Enviando… <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-dasharray="60" stroke-dashoffset="15"/></svg>';
     }
+
+    const templateParams = {
+      from_name:    form.querySelector('#name')?.value    || '',
+      from_email:   form.querySelector('#email')?.value   || '',
+      phone:        form.querySelector('#phone')?.value   || '',
+      service:      form.querySelector('#service')?.value || '',
+      message:      form.querySelector('#message')?.value || '',
+    };
+
+    emailjs.send('service_fv6ww8c', 'template_zvccxma', templateParams)
+      .then(() => {
+        // Envia confirmação para o cliente
+        return emailjs.send('service_fv6ww8c', 'template_xxk48xw', templateParams);
+      })
+      .then(() => {
+        form.reset();
+        if (charCountEl) charCountEl.textContent = '0/500';
+
+        success.classList.add('show');
+        setTimeout(() => success.classList.remove('show'), 6000);
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalHTML;
+        }
+      })
+      .catch(err => {
+        console.error('EmailJS error:', err);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalHTML;
+        }
+        alert('Erro ao enviar mensagem. Tente novamente ou nos contate pelo WhatsApp.');
+      });
   });
 
   /* ── Máscara de telefone ── */
@@ -527,6 +599,17 @@ function initContactForm() {
         v = `(${v.slice(0,2)}) ${v.slice(2)}`;
       }
       phoneInput.value = v;
+    });
+  }
+
+  /* ── Contador de caracteres (mensagem) ── */
+  const messageInput = form.querySelector('#message');
+  const charCountEl  = document.getElementById('charCount');
+  if (messageInput && charCountEl) {
+    messageInput.addEventListener('input', () => {
+      const len = messageInput.value.length;
+      charCountEl.textContent = `${len}/500`;
+      charCountEl.style.color = len > 450 ? 'rgba(239,68,68,0.8)' : '';
     });
   }
 }
@@ -558,6 +641,157 @@ function initLazyImages() {
 }
 
 /* ─────────────────────────────────────────────
+   12. GALERIA — VER MAIS / VER MENOS
+   Exibe INITIAL_SHOW itens por padrão em cada
+   painel (fotos e vídeos). O botão expande ou
+   recolhe os itens restantes com animação suave.
+───────────────────────────────────────────── */
+
+function initGalleryToggle() {
+  const INITIAL_SHOW = 6; // quantos itens aparecem por padrão
+
+  /**
+   * Configura o "ver mais / ver menos" para um painel específico.
+   * @param {string} panelSelector  - seletor do painel (data-panel)
+   * @param {string} itemSelector   - seletor dos itens dentro do painel
+   * @param {string} btnId          - id do botão toggle
+   * @param {string} countId        - id do span de contagem
+   * @param {string} wrapId         - id do wrapper do botão
+   * @param {string} labelMore      - texto "ver mais"
+   * @param {string} labelLess      - texto "ver menos"
+   */
+  function setupToggle({ panelSelector, itemSelector, btnId, countId, wrapId, labelMore, labelLess }) {
+    const panel = document.querySelector(panelSelector);
+    const btn   = document.getElementById(btnId);
+    const countEl = document.getElementById(countId);
+    const wrap  = document.getElementById(wrapId);
+    if (!panel || !btn) return;
+
+    const items = Array.from(panel.querySelectorAll(itemSelector));
+    const total = items.length;
+    const hidden = total - INITIAL_SHOW;
+
+    // Se não há itens extras, esconde o botão inteiro
+    if (hidden <= 0) {
+      if (wrap) wrap.style.display = 'none';
+      return;
+    }
+
+    // Esconde os itens além do limite inicial
+    items.slice(INITIAL_SHOW).forEach(el => el.classList.add('gallery__item--hidden'));
+
+    // Mostra contagem no badge (+25, etc.)
+    if (countEl) countEl.textContent = `+${hidden}`;
+
+    let expanded = false;
+
+    btn.addEventListener('click', () => {
+      expanded = !expanded;
+
+      if (expanded) {
+        // Expande: mostra tudo
+        items.slice(INITIAL_SHOW).forEach(el => {
+          el.classList.remove('gallery__item--hidden');
+          // Garante que a animação de entrada dispare nos itens recém-exibidos
+          if (!el.classList.contains('visible')) el.classList.add('visible');
+        });
+        btn.querySelector('.gallery__toggle-label').textContent = labelLess;
+        if (countEl) countEl.textContent = '';
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        // Recolhe: volta ao estado inicial e rola suave até o topo da galeria
+        items.slice(INITIAL_SHOW).forEach(el => el.classList.add('gallery__item--hidden'));
+        btn.querySelector('.gallery__toggle-label').textContent = labelMore;
+        if (countEl) countEl.textContent = `+${hidden}`;
+        btn.setAttribute('aria-expanded', 'false');
+
+        // Rola de volta ao topo da seção galeria
+        const section = document.getElementById('galeria');
+        if (section) {
+          const header = document.getElementById('header');
+          const headerH = header ? header.getBoundingClientRect().height : 0;
+          const top = section.getBoundingClientRect().top + window.scrollY - headerH - 12;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  }
+
+  // Fotos
+  setupToggle({
+    panelSelector: '.gallery__panel[data-panel="fotos"]',
+    itemSelector:  '.photo-grid__item',
+    btnId:         'toggleFotos',
+    countId:       'toggleFotosCount',
+    wrapId:        'toggleFotosWrap',
+    labelMore:     'Ver mais fotos',
+    labelLess:     'Ver menos fotos',
+  });
+
+  // Vídeos — o wrapper começa oculto; o módulo de tabs o exibe ao mudar de aba
+  setupToggle({
+    panelSelector: '.gallery__panel[data-panel="videos"]',
+    itemSelector:  '.video-card',
+    btnId:         'toggleVideos',
+    countId:       'toggleVideosCount',
+    wrapId:        'toggleVideosWrap',
+    labelMore:     'Ver mais vídeos',
+    labelLess:     'Ver menos vídeos',
+  });
+
+  // Sincroniza a visibilidade do botão de vídeos com as abas
+  document.querySelectorAll('.gallery__tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const activeTab   = tab.dataset.tab;
+      const fotosWrap   = document.getElementById('toggleFotosWrap');
+      const videosWrap  = document.getElementById('toggleVideosWrap');
+      if (fotosWrap)  fotosWrap.style.display  = activeTab === 'fotos'   ? 'flex' : 'none';
+      if (videosWrap) videosWrap.style.display  = activeTab === 'videos'  ? 'flex' : 'none';
+    });
+  });
+}
+
+/* ─────────────────────────────────────────────
+   INICIALIZAÇÃO
+───────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────
+   13. SCROLL-TO-TOP
+   Botão aparece após 400px de scroll
+───────────────────────────────────────────── */
+
+function initScrollToTop() {
+  const btn = document.createElement('button');
+  btn.className   = 'scroll-top-btn';
+  btn.setAttribute('aria-label', 'Voltar ao topo');
+  btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* ─────────────────────────────────────────────
+   14. VALIDAÇÃO DE NOME (bloqueia números)
+───────────────────────────────────────────── */
+
+function initNameField() {
+  const nameInput = document.getElementById('name');
+  if (!nameInput) return;
+  nameInput.addEventListener('input', () => {
+    nameInput.value = nameInput.value.replace(/[0-9]/g, '');
+  });
+}
+
+/* ─────────────────────────────────────────────
    INICIALIZAÇÃO
 ───────────────────────────────────────────── */
 
@@ -570,7 +804,10 @@ ready(() => {
   initCounters();
   initHoverAudio();
   initGalleryTabs();
+  initGalleryToggle();
   initBoxVideo();
   initContactForm();
   initLazyImages();
+  initScrollToTop();
+  initNameField();
 });

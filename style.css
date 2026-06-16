@@ -19,8 +19,8 @@
   --white:        #F4F4F5;
   --white-pure:   #FFFFFF;
 
-  --gold:         #C9A84C;
-  --gold-light:   #E2C97E;
+  --gold:         #0000FF;
+  --gold-light:   #0000FF;
   --gold-dim:     rgba(201,168,76,0.10);
   --gold-glow:    rgba(201,168,76,0.22);
 
@@ -1015,6 +1015,45 @@ img { max-width: 100%; display: block; }
 }
 .service-card__btn:hover { letter-spacing: 3px; }
 
+/* Tagline institucional da seção de serviços */
+.services__tagline {
+  margin-top: 56px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 28px 36px;
+  background: linear-gradient(120deg, rgba(201,168,76,0.06) 0%, var(--surface) 100%);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: var(--r);
+  border-left: 3px solid var(--gold);
+}
+.services__tagline-shield {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: 50%;
+}
+.services__tagline-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.services__tagline-text strong {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.services__tagline-text span {
+  font-size: var(--text-body);
+  color: var(--soft);
+  line-height: 1.6;
+}
+
 /* =============================================
    DIFERENCIAIS
    ============================================= */
@@ -1562,6 +1601,69 @@ img { max-width: 100%; display: block; }
 }
 
 /* =============================================
+   FORMULÁRIO — MELHORIAS
+   ============================================= */
+
+/* Mensagem de erro por campo */
+.contact__field-error {
+  display: block;
+  font-size: 11px;
+  color: rgba(239,68,68,0.85);
+  margin-top: 5px;
+  min-height: 16px;
+  font-family: var(--font-body);
+  letter-spacing: 0.3px;
+}
+
+/* Contador de caracteres */
+.contact__char-count {
+  float: right;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--mid);
+  letter-spacing: 0;
+  font-family: var(--font-body);
+  text-transform: none;
+}
+
+/* Animação de loading no botão */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =============================================
+   SCROLL TO TOP
+   ============================================= */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 96px;
+  right: 28px;
+  z-index: 998;
+  width: 44px;
+  height: 44px;
+  background: var(--graphite);
+  border: 1px solid var(--border-2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--soft);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, background 0.2s, color 0.2s;
+}
+.scroll-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+.scroll-top-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+}
+
+/* =============================================
    WHATSAPP FLOAT
    ============================================= */
 .whatsapp-float {
@@ -1732,4 +1834,65 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 16px;
+}
+/* =============================================
+   GALERIA — VER MAIS / VER MENOS
+   ============================================= */
+
+/* Itens ocultos além do limite inicial */
+.gallery__panel .photo-grid__item.gallery__item--hidden,
+.gallery__panel .video-card.gallery__item--hidden {
+  display: none;
+}
+
+/* Wrap do botão */
+.gallery__toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+/* Botão */
+.gallery__toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-head);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+
+.gallery__toggle-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+/* Contador (ex: "+25") */
+.gallery__toggle-count {
+  background: var(--gold-dim);
+  border-radius: 20px;
+  padding: 2px 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+/* Seta animada */
+.gallery__toggle-icon {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.gallery__toggle-btn[aria-expanded="true"] .gallery__toggle-icon {
+  transform: rotate(180deg);
 }

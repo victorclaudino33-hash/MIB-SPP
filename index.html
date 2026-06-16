@@ -8,6 +8,7 @@
 
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -76,8 +77,7 @@
         </h1>
 
         <p class="hero__sub">
-          Proteção estratégica, discrição absoluta e profissionais preparados<br />
-          para atuar nos mais diversos cenários.
+          Proteção estratégica, discrição absoluta e profissionais preparados para atuar nos mais diversos cenários. A MIB SPP Segurança Pessoal & Proteção VIP oferece soluções completas em segurança privada, proteção executiva e patrimonial. Com análise de risco e uma equipe altamente treinada, garantimos proteção VIP 24 horas para empresários, artistas, famílias e eventos, protegendo vidas, patrimônios e reputações com total profissionalismo e excelência.
         </p>
 
         <div class="hero__actions">
@@ -88,7 +88,7 @@
             </svg>
             SOLICITAR ORÇAMENTO
           </a>
-          <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="btn btn--outline btn--lg">
+          <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="btn btn--outline btn--lg">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
@@ -349,7 +349,7 @@
         <div class="gallery__panel photo-grid photo-grid--uniform" data-panel="fotos">
 
           <div class="photo-grid__item" data-animate>
-            <img src="img/op_foto1.jpg" alt="Equipe MIB SPP em operação" loading="lazy" />
+            <img src="img/box_artista.jpg" alt="Equipe MIB SPP em operação" loading="lazy" />
           </div>
           <div class="photo-grid__item" data-animate>
             <img src="img/op_foto2.jpg" alt="Segurança com artistas" loading="lazy" />
@@ -370,12 +370,12 @@
             <img src="img/op_foto7.jpg" alt="Equipe em campo" loading="lazy" />
           </div>
           <div class="photo-grid__item" data-animate>
-            <img src="img/box_artista.jpg" alt="MIB SPP com artista" loading="lazy" />
+            <img src="img/op_foto8.jpg" alt="MIB SPP com artista" loading="lazy" />
           </div>
 
           <!-- Fotos adicionais — lote img_2 -->
           <div class="photo-grid__item" data-animate>
-            <img src="img/op_foto8.jpg" alt="Operação MIB SPP" loading="lazy" />
+            <img src="img/op_foto35.jpg" alt="Operação MIB SPP" loading="lazy" />
           </div>
           <div class="photo-grid__item" data-animate>
             <img src="img/op_foto9.jpg" alt="Segurança em evento" loading="lazy" />
@@ -447,6 +447,17 @@
             <img src="img/op_foto31.jpg" alt="Segurança profissional" loading="lazy" />
           </div>
 
+        </div>
+
+        <!-- Botão Ver mais / Ver menos — Fotos -->
+        <div class="gallery__toggle-wrap" id="toggleFotosWrap">
+          <button class="gallery__toggle-btn" id="toggleFotos" aria-expanded="false">
+            <span class="gallery__toggle-label">Ver mais fotos</span>
+            <span class="gallery__toggle-count" id="toggleFotosCount"></span>
+            <svg class="gallery__toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
 
         <!-- ===== PAINEL DE VÍDEOS — grid uniforme, autoplay mudo, hover ativa o áudio ===== -->
@@ -567,7 +578,252 @@
             </div>
           </div>
 
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op12.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">MIB SPP</span>
+              <h4>Operação MIB SPP</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op13.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Proteção</span>
+              <h4>Proteção em Ação</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op15.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Campo</span>
+              <h4>Equipe em Campo</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/op_video_wa2.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Segurança</span>
+              <h4>Segurança Executiva</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op3.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Operação</span>
+              <h4>Operação de Campo</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op5.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Show</span>
+              <h4>Segurança em Show</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op6.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Escolta</span>
+              <h4>Escolta Artística</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op7.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Bastidores</span>
+              <h4>Bastidores de Evento</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op8.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Acesso</span>
+              <h4>Controle de Entrada</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op9.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Proteção</span>
+              <h4>Proteção Pessoal</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op10.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Evento</span>
+              <h4>Segurança em Evento</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video_op11.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">Campo</span>
+              <h4>Operação Noturna</h4>
+            </div>
+          </div>
+
+          <div class="video-card" data-animate>
+            <video class="video-card__media" autoplay muted loop playsinline data-hover-audio>
+              <source src="img/video-op11.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card__sound-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="gallery__overlay"></div>
+            <div class="gallery__label">
+              <span class="gallery__tag">MIB SPP</span>
+              <h4>MIB SPP em Ação</h4>
+            </div>
+          </div>
+
         </div><!-- /video-grid -->
+
+        <!-- Botão Ver mais / Ver menos — Vídeos -->
+        <div class="gallery__toggle-wrap" id="toggleVideosWrap" style="display:none">
+          <button class="gallery__toggle-btn" id="toggleVideos" aria-expanded="false">
+            <span class="gallery__toggle-label">Ver mais vídeos</span>
+            <span class="gallery__toggle-count" id="toggleVideosCount"></span>
+            <svg class="gallery__toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
 
       </div>
     </section>
@@ -584,44 +840,47 @@
 
         <div class="services__grid services__grid--6">
 
+          <!-- 01 -->
           <article class="service-card service-card--featured" data-animate>
             <div class="service-card__badge">Mais Solicitado</div>
             <div class="service-card__icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
-                <polygon points="10,8 16,12 10,16" fill="currentColor"/>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M9 12l2 2 4-4" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <div class="service-card__number">01</div>
-            <h3 class="service-card__title">Segurança para Artistas</h3>
-            <p class="service-card__desc">Proteção completa durante shows, eventos, viagens e compromissos — com discrição e profissionalismo.</p>
+            <h3 class="service-card__title">Segurança Pessoal (VSPP)</h3>
+            <p class="service-card__desc">Proteção personalizada para pessoas físicas que necessitam de segurança contínua e discreta no dia a dia.</p>
             <ul class="service-card__list">
-              <li>Shows e turnês nacionais</li>
-              <li>Backstage e camarins</li>
-              <li>Transporte seguro</li>
+              <li>Vigilância pessoal contínua</li>
+              <li>Planejamento de rotas seguras</li>
+              <li>Cobertura 24 horas</li>
             </ul>
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
           </article>
 
+          <!-- 02 -->
           <article class="service-card" data-animate>
             <div class="service-card__icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                 <rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
                 <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                <circle cx="12" cy="14" r="2" stroke="currentColor" stroke-width="1.5"/>
               </svg>
             </div>
             <div class="service-card__number">02</div>
             <h3 class="service-card__title">Proteção Executiva</h3>
-            <p class="service-card__desc">Segurança estratégica para empresários e personalidades que exigem discrição absoluta.</p>
+            <p class="service-card__desc">Segurança estratégica e discreta para empresários, artistas e influenciadores de alto perfil.</p>
             <ul class="service-card__list">
-              <li>Executivos corporativos</li>
-              <li>Personalidades VIP</li>
-              <li>Viagens e deslocamentos</li>
+              <li>Empresários e CEOs</li>
+              <li>Artistas e influenciadores</li>
+              <li>Atuação sigilosa e profissional</li>
             </ul>
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
           </article>
 
+          <!-- 03 -->
           <article class="service-card" data-animate>
             <div class="service-card__icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -631,16 +890,17 @@
               </svg>
             </div>
             <div class="service-card__number">03</div>
-            <h3 class="service-card__title">Eventos</h3>
-            <p class="service-card__desc">Controle de acesso, monitoramento e prevenção em shows, festas e eventos corporativos de alto perfil.</p>
+            <h3 class="service-card__title">Proteção Familiar</h3>
+            <p class="service-card__desc">Acompanhamento especializado para famílias, garantindo segurança em todas as rotinas e deslocamentos.</p>
             <ul class="service-card__list">
-              <li>Shows e festivais</li>
-              <li>Festas e recepções</li>
-              <li>Eventos corporativos</li>
+              <li>Acompanhamento familiar completo</li>
+              <li>Proteção de cônjuges e filhos</li>
+              <li>Segurança em rotinas diárias</li>
             </ul>
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
           </article>
 
+          <!-- 04 -->
           <article class="service-card" data-animate>
             <div class="service-card__icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -648,33 +908,57 @@
               </svg>
             </div>
             <div class="service-card__number">04</div>
-            <h3 class="service-card__title">Escolta Particular</h3>
-            <p class="service-card__desc">Acompanhamento discreto e profissional em deslocamentos, viagens e compromissos de alto risco.</p>
+            <h3 class="service-card__title">Escolta Pessoal e Eventos</h3>
+            <p class="service-card__desc">Escolta profissional e acompanhamento seguro em eventos sociais, corporativos e compromissos de qualquer natureza.</p>
             <ul class="service-card__list">
-              <li>Rotas planejadas</li>
-              <li>Veículos de apoio</li>
-              <li>Cobertura 24 horas</li>
+              <li>Escolta em deslocamentos</li>
+              <li>Acompanhamento em eventos</li>
+              <li>Veículos e rotas planejadas</li>
             </ul>
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
           </article>
 
+          <!-- 05 -->
           <article class="service-card" data-animate>
             <div class="service-card__icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <polygon points="22,3 22,9 19,9" stroke="currentColor" stroke-width="1.2" fill="none"/>
               </svg>
             </div>
             <div class="service-card__number">05</div>
-            <h3 class="service-card__title">Segurança Corporativa</h3>
-            <p class="service-card__desc">Proteção patrimonial e operacional para empresas, sedes e instalações de médio e grande porte.</p>
+            <h3 class="service-card__title">Segurança para Shows e Eventos</h3>
+            <p class="service-card__desc">Controle de acesso, monitoramento e prevenção em shows, festas e eventos corporativos de qualquer porte.</p>
             <ul class="service-card__list">
-              <li>Proteção patrimonial</li>
-              <li>Controle de acesso</li>
-              <li>Monitoramento ativo</li>
+              <li>Shows, festas e festivais</li>
+              <li>Eventos corporativos</li>
+              <li>Controle de acesso e perímetro</li>
             </ul>
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
           </article>
 
+          <!-- 06 -->
+          <article class="service-card" data-animate>
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="service-card__number">06</div>
+            <h3 class="service-card__title">Segurança Patrimonial</h3>
+            <p class="service-card__desc">Proteção e controle de acesso para patrimônios, instalações e propriedades com monitoramento ativo.</p>
+            <ul class="service-card__list">
+              <li>Proteção de propriedades</li>
+              <li>Controle de acesso rigoroso</li>
+              <li>Monitoramento presencial</li>
+            </ul>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+          </article>
+
+          <!-- 07 -->
           <article class="service-card" data-animate>
             <div class="service-card__icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -684,18 +968,90 @@
                 <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               </svg>
             </div>
-            <div class="service-card__number">06</div>
-            <h3 class="service-card__title">Consultoria em Segurança</h3>
-            <p class="service-card__desc">Planejamento preventivo e análise de vulnerabilidades para empresas e eventos de qualquer porte.</p>
+            <div class="service-card__number">07</div>
+            <h3 class="service-card__title">Análise de Risco</h3>
+            <p class="service-card__desc">Avaliação técnica de vulnerabilidades e elaboração de planos de segurança estratégicos e preventivos.</p>
             <ul class="service-card__list">
-              <li>Análise de risco</li>
-              <li>Plano de segurança</li>
-              <li>Treinamento de equipes</li>
+              <li>Mapeamento de vulnerabilidades</li>
+              <li>Planejamento de segurança</li>
+              <li>Consultoria especializada</li>
             </ul>
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+          </article>
+
+          <!-- 08 -->
+          <article class="service-card" data-animate>
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="service-card__number">08</div>
+            <h3 class="service-card__title">Acompanhamento em Viagens</h3>
+            <p class="service-card__desc">Suporte e proteção profissional em viagens nacionais e deslocamentos de qualquer distância ou duração.</p>
+            <ul class="service-card__list">
+              <li>Viagens nacionais</li>
+              <li>Deslocamentos de alto risco</li>
+              <li>Logística e rotas seguras</li>
+            </ul>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+          </article>
+
+          <!-- 09 -->
+          <article class="service-card" data-animate>
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="service-card__number">09</div>
+            <h3 class="service-card__title">Proteção VIP 24 Horas</h3>
+            <p class="service-card__desc">Cobertura ininterrupta para clientes VIP que exigem presença e disponibilidade total a qualquer hora do dia ou da noite.</p>
+            <ul class="service-card__list">
+              <li>Disponibilidade integral</li>
+              <li>Mobilização imediata</li>
+              <li>Equipe em escala contínua</li>
+            </ul>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
+          </article>
+
+          <!-- 10 -->
+          <article class="service-card" data-animate>
+            <div class="service-card__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <polyline points="16,11 18,13 22,9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="service-card__number">10</div>
+            <h3 class="service-card__title">Equipe Treinada e Qualificada</h3>
+            <p class="service-card__desc">Profissionais com formação técnica, treinamento contínuo e certificação para atuar nos mais exigentes cenários de segurança.</p>
+            <ul class="service-card__list">
+              <li>Ex-militares e especialistas</li>
+              <li>Capacitação constante</li>
+              <li>Conduta ética e profissional</li>
+            </ul>
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="service-card__btn">Solicitar →</a>
           </article>
 
         </div>
+
+        <!-- Tagline institucional -->
+        <div class="services__tagline" data-animate>
+          <div class="services__tagline-shield">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#C9A84C" stroke-width="1.8" stroke-linejoin="round" fill="rgba(201,168,76,0.08)"/>
+            </svg>
+          </div>
+          <div class="services__tagline-text">
+            <strong>MIB SPP Segurança Pessoal &amp; Proteção VIP</strong>
+            <span>Protegendo famílias, vidas, patrimônios e reputações com profissionalismo, discrição e excelência.</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -973,7 +1329,17 @@
               </div>
             </div>
           </div>
-
+<div class="testimonial-card" data-animate>
+  <div class="testimonial-card__stars">★★★★★</div>
+  <p class="testimonial-card__text">"Atuar em diferentes frentes como set de filmagem, palcos e eventos de moda exige uma segurança que entenda essa dinâmica. A MIB SPP entrega exatamente isso: proteção cirúrgica, postura impecável e total discrição."</p>
+  <div class="testimonial-card__author">
+    <div class="testimonial-card__avatar">CP</div>
+    <div>
+      <strong>Cléo Pires</strong>
+      <span>Atriz, Cantora e Modelo</span>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </section>
@@ -1193,6 +1559,19 @@
               </svg>
             </div>
           </div>
+          <div class="artists__card" data-animate>
+  <div class="artists__avatar">CP</div>
+  <div class="artists__info">
+    <span class="artists__badge">Atriz / Cantora / Modelo</span>
+    <h3 class="artists__name">Cléo Pires</h3>
+    <p class="artists__desc">Proteção VIP e escolta em eventos e sets</p>
+  </div>
+  <div class="artists__shield">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
 
         </div>
 
@@ -1237,7 +1616,7 @@
                 Aulas individuais e em grupo
               </li>
             </ul>
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
@@ -1278,7 +1657,7 @@
             com eficiência, discrição e comprometimento.
           </p>
           <div class="cta-section__actions">
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="btn btn--white btn--lg">
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="btn btn--white btn--lg">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
@@ -1311,7 +1690,7 @@
               </div>
               <div>
                 <strong>Telefone / WhatsApp</strong>
-                <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">(00) 90000-0000</a>
+                <a href="https://wa.me/5511983543950" target="_blank" rel="noopener">(11) 98354-3950</a>
               </div>
             </div>
             <div class="contact__info-item">
@@ -1323,7 +1702,18 @@
               </div>
               <div>
                 <strong>E-mail</strong>
-                <a href="mailto:contato@mibspp.com.br">contato@mibspp.com.br</a>
+                <a href="mailto:mibvspp@gmail.com">mibvspp@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact__info-item">
+              <div class="contact__info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Instagram</strong>
+                <a href="https://instagram.com/mibbodyguard" target="_blank" rel="noopener">@mibbodyguard</a>
               </div>
             </div>
             <div class="contact__info-item">
@@ -1358,6 +1748,10 @@
               <input type="text" id="name" name="name" placeholder="Seu nome" required />
             </div>
             <div class="contact__form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="contact__form-group">
               <label for="phone">WhatsApp / Telefone</label>
               <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required />
             </div>
@@ -1375,8 +1769,11 @@
               </select>
             </div>
             <div class="contact__form-group contact__form-group--full">
-              <label for="message">Descreva sua necessidade</label>
-              <textarea id="message" name="message" rows="4"
+              <label for="message">
+                Descreva sua necessidade
+                <span class="contact__char-count" id="charCount">0/500</span>
+              </label>
+              <textarea id="message" name="message" rows="4" maxlength="500"
                         placeholder="Conte-nos mais sobre o que você precisa..."></textarea>
             </div>
             <button type="submit" class="btn btn--primary contact__submit">
@@ -1417,10 +1814,10 @@
           </a>
           <p>Proteção estratégica para quem não pode falhar. Discrição, eficiência e comprometimento total.</p>
           <div class="footer__social">
-            <a href="https://instagram.com/mibspp" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+            <a href="https://instagram.com/mibbodyguard" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
+            <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" aria-label="WhatsApp" class="footer__social-link">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </a>
           </div>
@@ -1453,8 +1850,9 @@
 
         <div class="footer__contact">
           <h4>Contato</h4>
-          <p><a href="https://wa.me/5500000000000" target="_blank" rel="noopener">(00) 90000-0000</a></p>
-          <p><a href="mailto:contato@mibspp.com.br">contato@mibspp.com.br</a></p>
+          <p><a href="https://wa.me/5511983543950" target="_blank" rel="noopener">(11) 98354-3950</a></p>
+          <p><a href="mailto:mibvspp@gmail.com">mibvspp@gmail.com</a></p>
+          <p><a href="https://instagram.com/mibbodyguard" target="_blank" rel="noopener">@mibbodyguard</a></p>
           <p>São Paulo, SP — Brasil</p>
           <p>Atendimento 24h · 7 dias</p>
         </div>
@@ -1463,13 +1861,12 @@
 
       <div class="footer__bottom">
         <p>© 2026 MIB SPP — Segurança Pessoal e Proteção Executiva. Todos os direitos reservados.</p>
-        <p>CNPJ: 00.000.000/0001-00 · Empresa registrada e certificada</p>
       </div>
     </div>
   </footer>
 
   <!-- WhatsApp Float -->
-  <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Falar no WhatsApp">
+  <a href="https://wa.me/5511983543950" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Falar no WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
