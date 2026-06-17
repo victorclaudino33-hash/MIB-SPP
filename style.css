@@ -241,6 +241,13 @@ img { max-width: 100%; display: block; }
   margin-right: auto;
 }
 .nav__logo-emblem { color: var(--white); flex-shrink: 0; }
+.nav__logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  border-radius: 6px;
+}
 .nav__logo-text {
   display: flex;
   flex-direction: column;
@@ -664,6 +671,32 @@ img { max-width: 100%; display: block; }
   padding: 12px 18px;
   border-radius: var(--r);
   box-shadow: 0 8px 24px rgba(201,168,76,0.35);
+}
+
+/* Logo overlay na seção Sobre */
+.about__logo-overlay {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+.about__logo-img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.7));
+  opacity: 0.92;
+}
+
+/* Slogan em itálico na seção sobre */
+.about__text--slogan {
+  border-left: 3px solid var(--gold);
+  padding-left: 14px;
+  color: var(--soft);
+  font-style: italic;
+  margin-top: 8px !important;
 }
 
 .about__content {

@@ -21,12 +21,7 @@
 
       <a href="#inicio" class="nav__logo">
         <div class="nav__logo-emblem">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <path d="M18 2L4 8v10c0 8.5 5.9 16.4 14 18.6C26.1 34.4 32 26.5 32 18V8L18 2z"
-                  stroke="currentColor" stroke-width="1.5" fill="rgba(201,168,76,0.08)"/>
-            <path d="M12 18l4 4 8-8" stroke="#C9A84C" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <img src="img/logo_mib.png" alt="MIB SPP" class="nav__logo-img" />
         </div>
         <div class="nav__logo-text">
           <span class="nav__logo-main">MIB <em>SPP</em></span>
@@ -36,10 +31,12 @@
 
       <ul class="nav__menu" id="navMenu">
         <li><a href="#inicio"       class="nav__link">Início</a></li>
-        <li><a href="#sobre"        class="nav__link">Sobre</a></li>
-        <li><a href="#servicos"     class="nav__link">Serviços</a></li>
-        <li><a href="#galeria"      class="nav__link">Galeria</a></li>
         <li><a href="#depoimentos"  class="nav__link">Depoimentos</a></li>
+        <li><a href="#sobre"        class="nav__link">Sobre</a></li>
+        <li><a href="#galeria"      class="nav__link">Galeria</a></li>
+        <li><a href="#servicos"     class="nav__link">Serviços</a></li>
+        <li><a href="#diferenciais" class="nav__link">Diferenciais</a></li>
+        <li><a href="#artistas"     class="nav__link">Artistas</a></li>
         <li><a href="#box"          class="nav__link">Box</a></li>
         <li><a href="#contato"      class="nav__link">Contato</a></li>
       </ul>
@@ -255,14 +252,19 @@
             <span class="section-tag">— Quem somos</span>
             <h2 class="section-title">Sobre a <span>MIB SPP</span></h2>
             <p class="about__text">
-              A MIB SPP Segurança Pessoal e Proteção Executiva foi fundada em 2024 por dois amigos
-              com o propósito de oferecer proteção profissional, atendimento personalizado e
-              soluções estratégicas de segurança para artistas, empresários e eventos.
+              A <strong>MIB SPP – Segurança Pessoal Executiva &amp; Proteção VIP</strong> é uma empresa especializada em segurança privada, fundada em 2024 com o objetivo de oferecer proteção, discrição e tranquilidade aos nossos clientes.
             </p>
             <p class="about__text">
-              Nossa missão é garantir tranquilidade, discrição e eficiência em cada operação,
-              atuando com profissionalismo nos mais variados cenários — desde bastidores de shows
-              até escoltas executivas de alto risco.
+              Criada por dois amigos apaixonados pela área de segurança, a MIB SPP nasceu para atender empresários, artistas, influenciadores, autoridades e famílias que buscam um serviço profissional e de alto padrão.
+            </p>
+            <p class="about__text">
+              Nossa equipe atua com comprometimento, responsabilidade e planejamento estratégico, garantindo a segurança de pessoas, patrimônios e eventos. Trabalhamos com foco na prevenção de riscos, proteção familiar, acompanhamento VIP, escolta pessoal e suporte em eventos corporativos e sociais.
+            </p>
+            <p class="about__text">
+              Na MIB SPP, acreditamos que segurança vai além da proteção física: é proporcionar confiança, liberdade e tranquilidade para que nossos clientes possam focar no que realmente importa.
+            </p>
+            <p class="about__text about__text--slogan">
+              <em>MIB SPP – Segurança Pessoal Executiva &amp; Proteção VIP<br/>Protegendo vidas, construindo confiança.</em>
             </p>
             <div class="about__pillars">
               <div class="about__pillar">
@@ -347,10 +349,6 @@
 
         <!-- ===== PAINEL DE FOTOS — grid uniforme, todos o mesmo tamanho ===== -->
         <div class="gallery__panel photo-grid photo-grid--uniform" data-panel="fotos">
-
-          <div class="photo-grid__item" data-animate>
-            <img src="img/box_artista.jpg" alt="Equipe MIB SPP em operação" loading="lazy" />
-          </div>
           <div class="photo-grid__item" data-animate>
             <img src="img/op_foto2.jpg" alt="Segurança com artistas" loading="lazy" />
           </div>
@@ -1056,7 +1054,7 @@
     </section>
 
     <!-- ===== DIFERENCIAIS ===== -->
-    <section class="differentials">
+    <section class="differentials" id="diferenciais">
       <div class="container">
 
         <div class="section-header" data-animate>
@@ -1149,201 +1147,6 @@
 
       </div>
     </section>
-
-    <!-- ===== AVALIAÇÕES DE CLIENTES (texto) ===== -->
-    <section class="testimonials" id="avaliacoes">
-      <div class="container">
-
-        <div class="section-header" data-animate>
-          <span class="section-tag">— O que dizem sobre nós</span>
-          <h2 class="section-title">Avaliações de <span>Clientes</span></h2>
-          <p class="section-desc">A opinião de quem confiou a sua segurança à MIB SPP</p>
-        </div>
-
-        <div class="testimonials__grid">
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Profissionalismo impecável. A equipe da MIB SPP garantiu toda a segurança do meu show sem nenhum incidente. Discrição e eficiência do início ao fim."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">JC</div>
-              <div>
-                <strong>Joia do Coro</strong>
-                <span>Artista</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Contratei para um evento corporativo de grande porte e superou todas as expectativas. Equipe treinada, discreta e sempre presente quando precisei."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">BV</div>
-              <div>
-                <strong>Bruno Vinicius</strong>
-                <span>Empresário</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Fui indicada por outros artistas e não me arrependi. A segurança especializada que a MIB SPP oferece faz toda a diferença."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">IO</div>
-              <div>
-                <strong>Ingrid Ohara</strong>
-                <span>Influencer</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Organizei um evento com mais de 5.000 pessoas e precisava de uma empresa confiável. A MIB SPP entregou muito acima do esperado em controle e prevenção."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">RP</div>
-              <div>
-                <strong>Ricardo Pena</strong>
-                <span>Organizador de Eventos</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Segurança de alto nível, equipe presente e sempre atenta. Trabalhei com a MIB SPP e posso dizer que é referência no que faz — profissionalismo do início ao fim."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">AM</div>
-              <div>
-                <strong>Aaron Modesto</strong>
-                <span>Artista</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"A MIB SPP me proporcionou total tranquilidade em todos os compromissos. Equipe discreta, atenciosa e sempre um passo à frente. Me senti segura do início ao fim."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">PO</div>
-              <div>
-                <strong>Paolla Oliveira</strong>
-                <span>Atriz</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Profissionais incríveis! Senti muita confiança com a equipe da MIB SPP ao meu lado. Indicaria para qualquer artista ou criador que preze pela sua segurança."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">LP</div>
-              <div>
-                <strong>Lays Peace</strong>
-                <span>Influenciadora Digital</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Excelência em cada detalhe. A MIB SPP garantiu minha proteção com uma abordagem estratégica e sempre muito profissional. Confiança total."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">GB</div>
-              <div>
-                <strong>Gracyanne Barbosa</strong>
-                <span>Influenciadora Fitness / Modelo</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Sem a MIB SPP eu não conseguiria curtir meus eventos com a mesma tranquilidade. Equipe de respeito, sempre ligados em tudo. Recomendo demais!"</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">ÁL</div>
-              <div>
-                <strong>Álvaro</strong>
-                <span>Influenciador Digital / Humorista</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"A MIB SPP é parceria certa para qualquer compromisso. Segurança de verdade, com discrição e eficiência. Me senti 100% protegida em todos os momentos."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">RU</div>
-              <div>
-                <strong>Rafa Uccman</strong>
-                <span>Influenciadora Digital</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Precisava de uma equipe séria para meus shows de stand-up e a MIB SPP superou as expectativas. Organização impecável, presença discreta e total controle da situação."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">MM</div>
-              <div>
-                <strong>Maurício Meirelles</strong>
-                <span>Humorista / Comediante</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Top team! A MIB SPP sabe como trabalhar com artistas internacionais. Profissionais preparados, comunicação ágil e segurança de alto nível. Parceiros de confiança."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">LM</div>
-              <div>
-                <strong>Lamar Morris</strong>
-                <span>Cantor / Dançarino</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"Rolou tudo certo com a MIB SPP na vibe. Equipe presente, sem vacilo, sempre garantindo o trampo. Parceria real, confio demais no trabalho deles."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">MC</div>
-              <div>
-                <strong>MC Caverinha</strong>
-                <span>Cantor / Trapper</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card" data-animate>
-            <div class="testimonial-card__stars">★★★★★</div>
-            <p class="testimonial-card__text">"A MIB SPP entende o ritmo do nosso mundo. Presença cirúrgica, equipe dedicada e profissionalismo que poucos têm. Parceria que só agrega para quem está no meio."</p>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">RB</div>
-              <div>
-                <strong>Real Bege</strong>
-                <span>Produtor Musical / Beatmaker</span>
-              </div>
-            </div>
-          </div>
-<div class="testimonial-card" data-animate>
-  <div class="testimonial-card__stars">★★★★★</div>
-  <p class="testimonial-card__text">"Atuar em diferentes frentes como set de filmagem, palcos e eventos de moda exige uma segurança que entenda essa dinâmica. A MIB SPP entrega exatamente isso: proteção cirúrgica, postura impecável e total discrição."</p>
-  <div class="testimonial-card__author">
-    <div class="testimonial-card__avatar">CP</div>
-    <div>
-      <strong>Cléo Pires</strong>
-      <span>Atriz, Cantora e Modelo</span>
-    </div>
-  </div>
-</div>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== ARTISTAS ATENDIDOS ===== -->
     <section class="artists" id="artistas">
       <div class="container">
@@ -1801,12 +1604,7 @@
         <div class="footer__brand">
           <a href="#inicio" class="nav__logo">
             <div class="nav__logo-emblem">
-              <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
-                <path d="M18 2L4 8v10c0 8.5 5.9 16.4 14 18.6C26.1 34.4 32 26.5 32 18V8L18 2z"
-                      stroke="currentColor" stroke-width="1.5" fill="rgba(201,168,76,0.08)"/>
-                <path d="M12 18l4 4 8-8" stroke="#C9A84C" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <img src="img/logo_mib.png" alt="MIB SPP" class="nav__logo-img" />
             </div>
             <div class="nav__logo-text">
               <span class="nav__logo-main">MIB <em>SPP</em></span>
